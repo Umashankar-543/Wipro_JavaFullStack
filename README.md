@@ -8,8 +8,7 @@ Assignment-3
 ![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/7e95a485-222b-4082-bd33-b8d441534727)
 
 Assignment-4
-![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/b3ff0fe0-5e8b-46dc-87c3-6563bbc41847)
-![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/2bd8a16f-cc31-48da-a286-31b1a27ed19a)
+![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/ccf1e73d-fc7f-4a29-8c91-cadf23efe953)
 
 Assignment-5
 ![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/3f888a04-390f-4fff-8f54-c065621bee04)
