@@ -17,3 +17,12 @@ Assignment-6
 ![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/fabc3fbb-fa12-484c-9e68-9b7382b61ac2)
 
 Assignment-7
+
+day-7
+ass-1
+![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/ed3d7b49-609f-4e45-bfcc-614cc4f6edb9)
+
+ass-2
+![image](https://github.com/Umashankar-543/Wipro_JavaFullStack/assets/99269368/b98f6fae-af5b-485f-833b-8d784d2f389b)
+
+ass-3
