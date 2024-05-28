@@ -16,7 +16,7 @@ class Job {
 }
 
 public class JobSequencing {
-	public static List<Job> JobSequencing(List<Job> jobs) {
+	public static List<Job> jobSequencing(List<Job> jobs) {
 		jobs.sort((a, b) -> b.Profit - a.Profit);
 		int maxDeadline = 0;
 		for (Job job : jobs) {
@@ -51,7 +51,7 @@ public class JobSequencing {
 		jobs.add(new Job(3, 2, 27));
 		jobs.add(new Job(4, 1, 25));
 		jobs.add(new Job(5, 3, 15));
-		List<Job> jobSequence = JobSequencing(jobs);
+		List<Job> jobSequence = jobSequencing(jobs);
 		int totalProfit = 0;
 		for (Job job : jobSequence) {
 			totalProfit += job.Profit;
