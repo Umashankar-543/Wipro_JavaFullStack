@@ -1,0 +1,132 @@
+/* styles.css */ 
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+} 
+* { 
+    box-sizing: border-box; 
+} 
+header, footer { 
+    background-color: #f2f2f2; 
+    padding: 20px; 
+    text-align: center; 
+    margin-bottom: 20px; 
+} 
+.nav-menu { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden; 
+    background-color: #333; 
+    text-align: center; 
+    animation: slideIn 1s ease-out; 
+} 
+.nav-menu li { 
+    display: inline; 
+} 
+.nav-menu li a { 
+    display: inline-block; 
+    color: white; 
+    padding: 14px 20px; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease; 
+} 
+.nav-menu li a:hover { 
+    background-color: #111; 
+} 
+.nav-menu li a.active { 
+    background-color: #4CAF50; 
+} 
+.container { 
+    display: flex; 
+    justify-content: space-between; 
+    margin: 0 20px; 
+} 
+.column { 
+    flex: 1; 
+    margin: 10px; 
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+} 
+#main-content { 
+    flex: 3; 
+} 
+#sidebar { 
+    flex: 1; 
+} 
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+} 
+table, th, td { 
+    border: 1px solid black; 
+} 
+th, td { 
+    padding: 15px; 
+    text-align: left; 
+} 
+form { 
+    margin-top: 20px; 
+    animation: fadeIn 2s ease-in-out; 
+} 
+label { 
+    display: inline-block; 
+    width: 100px; 
+} 
+input[type="text"], input[type="email"] { 
+    width: calc(100% - 110px); 
+    padding: 5px; 
+    margin-bottom: 10px; 
+} 
+input[type="submit"] { 
+    margin-top: 10px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+} 
+input[type="submit"]:hover { 
+    background-color: #4CAF50; 
+    color: white; 
+} 
+/* CSS3 Animations */ 
+@keyframes slideIn { 
+    from { 
+        transform: translateX(-100%); 
+        opacity: 0; 
+    } 
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    } 
+} 
+@keyframes fadeIn { 
+    from { 
+        opacity: 0; 
+    } 
+    to { 
+        opacity: 1; 
+    } 
+} 
+/* Media Queries */ 
+@media (max-width: 768px) { 
+    .container { 
+        flex-direction: column; 
+        margin: 0; 
+    } 
+    .nav-menu li { 
+        display: block; 
+    } 
+    .nav-menu li a { 
+        padding: 10px; 
+    } 
+    .column { 
+        margin: 10px 0; 
+        padding: 10px; 
+    } 
+    input[type="text"], input[type="email"] { 
+        width: 100%; 
+    } 
+} 
+ 

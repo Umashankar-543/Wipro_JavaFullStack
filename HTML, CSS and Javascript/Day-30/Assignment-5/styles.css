@@ -1,0 +1,17 @@
+body { 
+    font-family: Arial, sans-serif; 
+} 
+header, footer { 
+    text-align: center; 
+} 
+h2 { 
+    margin-top: 20px; 
+} 
+.container { 
+    margin-top: 20px; 
+} 
+footer { 
+    margin-top: 40px; 
+    padding: 20px 0; 
+} 
+ 
