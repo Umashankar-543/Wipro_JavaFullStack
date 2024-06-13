@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>JavaScript User Object Manipulation</title> 
+    <link rel="stylesheet" href="styles.css"> 
+</head> 
+<body> 
+    <div class="container"> 
+        <h1>JavaScript User Object Manipulation</h1> 
+        <div> 
+            <h2>Current User Info</h2> 
+            <p id="user-info">Name: John Doe, Email: john.doe@example.com, Age: 21</p> 
+        </div> 
+        <div> 
+            <h3>Change Name</h3> 
+            <input type="text" id="new-name" placeholder="Enter new name"> 
+            <button onclick="changeName()">Change Name</button> 
+        </div> 
+        <div> 
+            <h3>Update Email</h3> 
+            <input type="email" id="new-email" placeholder="Enter new email"> 
+            <button onclick="updateEmail()">Update Email</button> 
+        </div> 
+        <div> 
+            <h3>Calculate Birth Year</h3> 
+            <button onclick="displayBirthYear()">Calculate</button> 
+            <p id="birth-year"></p> 
+        </div> 
+    </div> 
+    <script src="script.js"></script> 
+</body> 
+</html> 
