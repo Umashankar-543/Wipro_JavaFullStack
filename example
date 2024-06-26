@@ -1,25 +1,50 @@
-package com.insurance.validators;
+package com.insurance.controllers;
 
 import com.insurance.beans.Policy;
-import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
+import com.insurance.services.PolicyService;
+import com.insurance.validators.PolicyValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-@Component
-public class PolicyValidator implements Validator {
+@Controller
+@RequestMapping("/policy")
+public class PolicyController {
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return Policy.class.equals(clazz);
+    private final PolicyService policyService;
+    private final PolicyValidator policyValidator;
+
+    @Autowired
+    public PolicyController(PolicyService policyService, PolicyValidator policyValidator) {
+        this.policyService = policyService;
+        this.policyValidator = policyValidator;
     }
 
-    @Override
-    public void validate(Object target, Errors errors) {
-        Policy policy = (Policy) target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "policyNumber", "NotEmpty.policy.policyNumber");
-        if (policy.getAmount() == null || policy.getAmount() <= 0) {
-            errors.rejectValue("amount", "Positive.policy.amount");
+    @GetMapping("/new")
+    public String showPolicyForm(Model model) {
+        model.addAttribute("policy", new Policy());
+        return "policy-form";
+    }
+
+    @PostMapping("/save")
+    public String savePolicy(@ModelAttribute("policy") Policy policy, BindingResult bindingResult, Model model) {
+        policyValidator.validate(policy, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "policy-form";
         }
+        policyService.savePolicy(policy);
+        return "redirect:/policy/" + policy.getPolicyId();
+    }
+
+    @GetMapping("/{policyId}")
+    public String showPolicyDetails(@PathVariable String policyId, Model model) {
+        Policy policy = policyService.getPolicyById(policyId);
+        if (policy == null) {
+            return "error"; // Handle policy not found scenario
+        }
+        model.addAttribute("policy", policy);
+        return "policy-details";
     }
 }
