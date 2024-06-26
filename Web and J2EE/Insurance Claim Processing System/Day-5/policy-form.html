@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Policy Form</title>
+</head>
+<body>
+    <h2>New Policy</h2>
+    <form action="#" th:action="@{/policy/save}" th:object="${policy}" method="post">
+        <div>
+            <label for="policyNumber">Policy Number:</label>
+            <input type="text" id="policyNumber" th:field="*{policyNumber}" required>
+            <span th:if="${#fields.hasErrors('policyNumber')}" th:errors="*{policyNumber}"></span>
+        </div>
+        <div>
+            <label for="policyholderName">Policyholder Name:</label>
+            <input type="text" id="policyholderName" th:field="*{policyholderName}" required>
+            <span th:if="${#fields.hasErrors('policyholderName')}" th:errors="*{policyholderName}"></span>
+        </div>
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" th:field="*{amount}" required>
+            <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</body>
+</html>
