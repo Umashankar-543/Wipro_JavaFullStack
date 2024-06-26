@@ -1,53 +1,35 @@
-package beans;
+package servlets;
 
-import java.io.Serializable;
+import beans.Claim;
 
-public class Claim implements Serializable {
-    private String claimId;
-    private String policyNumber;
-    private String claimType;
-    private String description;
-    private double amount;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-    public Claim() {}
+@WebServlet("/submitClaim")
+public class ClaimServlet extends HttpServlet {
 
-    public String getClaimId() {
-        return claimId;
-    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String policyNumber = request.getParameter("policyNumber");
+        String claimType = request.getParameter("claimType");
+        String description = request.getParameter("description");
+        double amount = Double.parseDouble(request.getParameter("amount"));
 
-    public void setClaimId(String claimId) {
-        this.claimId = claimId;
-    }
+        Claim claim = new Claim();
+        claim.setPolicyNumber(policyNumber);
+        claim.setClaimType(claimType);
+        claim.setDescription(description);
+        claim.setAmount(amount);
 
-    public String getPolicyNumber() {
-        return policyNumber;
-    }
+        // Simulate saving the claim, in reality, this should be saved in a database
+        String claimId = "CLM" + (int) (Math.random() * 10000);
+        claim.setClaimId(claimId);
 
-    public void setPolicyNumber(String policyNumber) {
-        this.policyNumber = policyNumber;
-    }
-
-    public String getClaimType() {
-        return claimType;
-    }
-
-    public void setClaimType(String claimType) {
-        this.claimType = claimType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
+        request.setAttribute("claim", claim);
+        request.getRequestDispatcher("confirmation.jsp").forward(request, response);
     }
 }
