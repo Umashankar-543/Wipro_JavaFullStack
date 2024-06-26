@@ -1,13 +1,15 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+package com.insurance.config;
 
-    <context:component-scan base-package="com.insurance"/>
-    <mvc:annotation-driven/>
-
-    <!-- Bean Declaration for PolicyValidator -->
-    <bean id="policyValidator" class="com.insurance.validators.PolicyValidator"/>
-
-</beans>
-applicationContext.xml
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.spring5.webflow.view.AjaxThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import used correctly.spring m pathMatch
