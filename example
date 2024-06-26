@@ -1,21 +1,25 @@
-package com.insurance.services;
+package com.insurance.validators;
 
 import com.insurance.beans.Policy;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
-import java.util.HashMap;
-import java.util.Map;
+@Component
+public class PolicyValidator implements Validator {
 
-@Service
-public class PolicyService {
-    private final Map<String, Policy> policyMap = new HashMap<>();
-
-    public void savePolicy(Policy policy) {
-        policy.setPolicyId("POL" + (int) (Math.random() * 10000));
-        policyMap.put(policy.getPolicyId(), policy);
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return Policy.class.equals(clazz);
     }
 
-    public Policy getPolicyById(String policyId) {
-        return policyMap.get(policyId);
+    @Override
+    public void validate(Object target, Errors errors) {
+        Policy policy = (Policy) target;
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "policyNumber", "NotEmpty.policy.policyNumber");
+        if (policy.getAmount() == null || policy.getAmount() <= 0) {
+            errors.rejectValue("amount", "Positive.policy.amount");
+        }
     }
 }
