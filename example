@@ -1,53 +1,21 @@
-package com.insurance.beans;
+package com.insurance.services;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import com.insurance.beans.Policy;
+import org.springframework.stereotype.Service;
 
-public class Policy {
-    private String policyId;
+import java.util.HashMap;
+import java.util.Map;
 
-    @NotEmpty(message = "Policy number is required")
-    private String policyNumber;
+@Service
+public class PolicyService {
+    private final Map<String, Policy> policyMap = new HashMap<>();
 
-    @NotEmpty(message = "Policyholder name is required")
-    @Size(min = 2, max = 50, message = "Policyholder name must be between 2 and 50 characters")
-    private String policyholderName;
-
-    @NotNull(message = "Amount is required")
-    private Double amount;
-
-    public Policy() {}
-
-    public String getPolicyId() {
-        return policyId;
+    public void savePolicy(Policy policy) {
+        policy.setPolicyId("POL" + (int) (Math.random() * 10000));
+        policyMap.put(policy.getPolicyId(), policy);
     }
 
-    public void setPolicyId(String policyId) {
-        this.policyId = policyId;
-    }
-
-    public String getPolicyNumber() {
-        return policyNumber;
-    }
-
-    public void setPolicyNumber(String policyNumber) {
-        this.policyNumber = policyNumber;
-    }
-
-    public String getPolicyholderName() {
-        return policyholderName;
-    }
-
-    public void setPolicyholderName(String policyholderName) {
-        this.policyholderName = policyholderName;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public Policy getPolicyById(String policyId) {
+        return policyMap.get(policyId);
     }
 }
